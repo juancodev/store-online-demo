@@ -1,0 +1,81 @@
+@use 'vars';
+
+.MyOrder {
+  width: 360px;
+  padding: 24px;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  background-color: vars.$white;
+  top: 60px;
+  bottom: 0;
+  border-radius: 6px;
+  border: 1px solid vars.$very-light-pink;
+  overflow-y: auto;
+  height: 620px;
+  z-index: 10;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.title-container img {
+  transform: rotate(180deg);
+  margin-right: 14px;
+}
+
+.title {
+  font-size: vars.$lg;
+  font-weight: bold;
+}
+
+.order {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+  background-color: vars.$text-input-field;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  padding: 0 24px;
+}
+
+.order p:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+}
+
+.order p span:nth-child(1) {
+  font-size: vars.$md;
+  font-weight: bold;
+}
+
+.order p:nth-child(2) {
+  text-align: end;
+  font-weight: bold;
+}
+
+.primary-button {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: vars.$hospital-green;
+  border-radius: 8px;
+  border: none;
+  color: vars.$white;
+  cursor: pointer;
+  font-size: vars.$md;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .15s ease-in-out;
+}
+
+@media (max-width: 640px) {
+  .MyOrder {
+    width: 100%;
+  }
+}
