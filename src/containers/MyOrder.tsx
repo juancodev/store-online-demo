@@ -1,28 +1,36 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import OrderItem from "@/components/OrderItem";
 import AppContext from "@/context/AppContext";
-import arrow from "@/icons/flechita.svg";
+import arrow from "@/assets/icons/flechita.svg";
 import styles from "@/styles/MyOrder.module.scss";
 
+type ReduceValues = {
+  price: number;
+};
+
 const MyOrder = () => {
-  const { state }: any = useContext(AppContext);
+  const { state } = useContext(AppContext);
 
   const sumTotal = (): number => {
-    const reducer = (accumulator: number, currentValue: any): number => {
+    const reducer = (
+      accumulator: number,
+      currentValue: ReduceValues
+    ): number => {
       return accumulator + currentValue.price;
     };
-    const sum: number = state.cart.reduce(reducer, 0);
+    const sum: number = state.cart?.reduce(reducer, 0);
     return sum;
   };
 
   return (
     <aside className={styles.MyOrder}>
       <div className={styles["title-container"]}>
-        <Image src={arrow} alt="arrow" />
+        <img src={arrow} alt="arrow" />
         <p className={styles.title}>My order</p>
       </div>
       <div className={styles["my-order-content"]}>
-        {state.cart.map((product: any, indexValue: number) => {
+        {state.cart?.map((product, indexValue: number): JSX.Element => {
           return (
             <OrderItem
               indexValue={indexValue}
@@ -37,7 +45,7 @@ const MyOrder = () => {
           </p>
           <p>{sumTotal()}$</p>
         </div>
-        <Link className={styles["primary-button"]} href="/checkout">
+        <Link className={styles["primary-button"]} to="/checkout">
           Checkout
         </Link>
       </div>

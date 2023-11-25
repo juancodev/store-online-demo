@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./containers/Layout";
-import { Home } from "./components/Home";
-import "./App.css";
-import Login from "./login";
-import Register from "./register";
+import Layout from "@/containers/Layout";
+import { Home } from "@/components/Home";
+import "@/App.css";
+import { Login } from "@/login/Login";
+import { Register } from "@/register/Register";
+import { Checkout } from "@/checkout/Checkout";
+import { NotFound } from "@/containers/NotFound";
+import { MyAccount } from "./account/Account";
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/account" element={<MyAccount />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
       </BrowserRouter>

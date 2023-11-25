@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Menu from "@/components/Menu";
+import { Menu } from "@/components/Menu";
 import MyOrder from "@/containers/MyOrder";
 import MenuMobile from "@/components/MenuMobile";
 import menuIcon from "@/assets/icons/icon_menu.svg";

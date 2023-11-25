@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import AppContext from "@/context/AppContext";
+import { Product } from "@/types/index";
 import buttonAddToCart from "@/assets/icons/bt_add_to_cart.svg";
 import buttonAddedToCart from "@/assets/icons/bt_added_to_cart.svg";
 import styles from "@/styles/ProductItem.module.scss";
@@ -12,18 +13,19 @@ type ProductItemProps = {
     price?: number;
     description?: string;
     category?: string;
-    images: string[];
+    image?: string;
+    creationAt?: string | Date;
   };
 };
 
 const ProductItem = ({ handleDetailToggle, product }: ProductItemProps) => {
   const { addToCart, addToDetail, state } = useContext(AppContext);
 
-  const handleClick = (item: unknown) => {
+  const handleClick = (item: Product) => {
     addToCart(item);
   };
 
-  const handleProductDetail = (product: object) => {
+  const handleProductDetail = (product: Product) => {
     addToDetail(product);
     handleDetailToggle("open");
   };
@@ -36,7 +38,7 @@ const ProductItem = ({ handleDetailToggle, product }: ProductItemProps) => {
         role="presentation"
       >
         <img
-          src={product?.images[0]}
+          src={product?.image}
           alt={product?.title}
           width={640}
           height={480}

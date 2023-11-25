@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import styles from "@/styles/Menu.module.scss";
 
 const Menu = () => {
@@ -7,13 +7,13 @@ const Menu = () => {
       <div className={styles.Menu}>
         <ul>
           <li>
-            <Link href="/checkout">My orders</Link>
+            <Link to="/checkout">My orders</Link>
           </li>
           <li>
-            <Link href="/">My account</Link>
+            <Link to="/account">My account</Link>
           </li>
           <li>
-            <Link href="/login">Sign out</Link>
+            <Link to="/login">Sign out</Link>
           </li>
         </ul>
       </div>
@@ -21,4 +21,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export { Menu };

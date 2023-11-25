@@ -9,7 +9,7 @@ type GetProducts = {
   price: number;
   description: string;
   category: string;
-  images: string[];
+  images: string[] | string;
 };
 
 const useGetProducts: ProductsFunction = (API) => {

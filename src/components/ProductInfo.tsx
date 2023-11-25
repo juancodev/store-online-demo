@@ -4,14 +4,14 @@ import btnAddToCart from "@/assets/icons/bt_add_to_cart.svg";
 import styles from "@/styles/ProductInfo.module.scss";
 
 const ProductInfo = () => {
-  const { state, addToCart }: any = useContext(AppContext);
-  const productCurrent: any = state.currentProduct;
+  const { state, addToCart } = useContext(AppContext);
+  const productCurrent = state.currentProduct;
   console.log(state);
   return (
     <>
       <img
-        src={productCurrent.images[0]}
-        alt={productCurrent.title}
+        src={productCurrent?.image}
+        alt={productCurrent?.title}
         width={400}
         height={400}
       />

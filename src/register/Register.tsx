@@ -1,6 +1,6 @@
 import { FormEvent, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, signInWithEmailAndPassword } from "../firebase/auth";
+import { auth, createUserWithEmailAndPassword } from "../firebase/auth";
 import logo from "@/logos/logo_yard_sale.svg";
 import styles from "@/styles/Login.module.scss";
 
@@ -8,7 +8,7 @@ type FormElement = FormEvent<HTMLButtonElement | HTMLFormElement>;
 type Email = string;
 type Password = string;
 
-const Login = () => {
+const Register = () => {
   const form = useRef<HTMLFormElement>(null);
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const Login = () => {
       const email: Email = form.current.value || "Empty@empty.com";
       const password: Password = form.current.value || "123456789";
       console.log(email, password);
-      signInWithEmailAndPassword(auth, email, password)
+      createUserWithEmailAndPassword(auth, email, password)
         .then((userCredentials) => {
           console.log(userCredentials.user);
           navigate("/");
@@ -33,6 +33,16 @@ const Login = () => {
         <img src={logo} alt="logo" className={styles.logo} />
 
         <form className={styles.form} ref={form}>
+          <label htmlFor="fullName" className={styles.label}>
+            Full name
+          </label>
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Juan Carlos Montilla Sanchez"
+            className={`${styles.input} ${styles["input-email"]}`}
+          />
+
           <label htmlFor="email" className={styles.label}>
             Email address
           </label>
@@ -57,17 +67,17 @@ const Login = () => {
             className={`${styles["primary-button"]} ${styles["login-button"]}`}
             onClick={handleSubmit}
           >
-            Log in
+            Sign up
           </button>
           <Link to="/">Forgot my password</Link>
         </form>
 
         <button className={styles["secondary-button"]}>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/signup">Login</Link>
         </button>
       </div>
     </div>
   );
 };
 
-export default Login;
+export { Register };

@@ -8,7 +8,7 @@ type FormElement = FormEvent<HTMLButtonElement | HTMLFormElement>;
 type Email = string;
 type Password = string;
 
-const Register = () => {
+const Login = () => {
   const form = useRef<HTMLFormElement>(null);
   const navigate = useNavigate();
 
@@ -33,16 +33,6 @@ const Register = () => {
         <img src={logo} alt="logo" className={styles.logo} />
 
         <form className={styles.form} ref={form}>
-          <label htmlFor="fullName" className={styles.label}>
-            Full name
-          </label>
-          <input
-            type="text"
-            name="fullName"
-            placeholder="Juan Carlos Montilla Sanchez"
-            className={`${styles.input} ${styles["input-email"]}`}
-          />
-
           <label htmlFor="email" className={styles.label}>
             Email address
           </label>
@@ -67,17 +57,17 @@ const Register = () => {
             className={`${styles["primary-button"]} ${styles["login-button"]}`}
             onClick={handleSubmit}
           >
-            Sign up
+            Log in
           </button>
           <Link to="/">Forgot my password</Link>
         </form>
 
         <button className={styles["secondary-button"]}>
-          <Link to="/signup">Login</Link>
+          <Link to="/signup">Sign up</Link>
         </button>
       </div>
     </div>
   );
 };
 
-export default Register;
+export { Login };

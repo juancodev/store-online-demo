@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import styles from "@/styles/MenuMobile.module.scss";
 
 const MenuMobile = () => {
@@ -6,43 +6,43 @@ const MenuMobile = () => {
     <div className={styles["mobile-menu"]}>
       <ul>
         <li>
-          <Link href="/">CATEGORIES</Link>
+          <Link to="/">CATEGORIES</Link>
         </li>
         <li>
-          <Link href="/">All</Link>
+          <Link to="/">All</Link>
         </li>
         <li>
-          <Link href="/">Clothes</Link>
+          <Link to="/">Clothes</Link>
         </li>
         <li>
-          <Link href="/">Electronics</Link>
+          <Link to="/">Electronics</Link>
         </li>
         <li>
-          <Link href="/">Furnitures</Link>
+          <Link to="/">Furnitures</Link>
         </li>
         <li>
-          <Link href="/">Toys</Link>
+          <Link to="/">Toys</Link>
         </li>
         <li>
-          <Link href="/">Other</Link>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <Link href="/checkout">My orders</Link>
-        </li>
-        <li>
-          <Link href="/">My account</Link>
+          <Link to="/">Other</Link>
         </li>
       </ul>
       <ul>
         <li>
-          <Link href="/" className={styles.email}>
+          <Link to="/checkout">My orders</Link>
+        </li>
+        <li>
+          <Link to="/account">My account</Link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <Link to="/" className={styles.email}>
             montillasanchezjuancarlos@gmail.com
           </Link>
         </li>
         <li>
-          <Link href="/login" className={styles["sign-out"]}>
+          <Link to="/login" className={styles["sign-out"]}>
             Sign out
           </Link>
         </li>

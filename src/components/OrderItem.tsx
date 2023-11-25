@@ -1,19 +1,25 @@
 import { useContext } from "react";
 import AppContext from "@/context/AppContext";
-import closeIcon from "@/icons/icon_close.png";
+import { Product } from "@/types/index";
+import closeIcon from "@/assets/icons/icon_close.png";
 import styles from "@/styles/OrderItem.module.scss";
 
-const OrderItem = ({ product, indexValue }: any) => {
-  const { removeFromCart }: any = useContext(AppContext);
+type OrderItemProps = {
+  product: Product;
+  indexValue: number;
+};
 
-  const handleRemove = (product: unknown) => {
-    removeFromCart(product);
+const OrderItem = ({ product, indexValue }: OrderItemProps) => {
+  const { removeFromCart } = useContext(AppContext);
+
+  const handleRemove = (indexProduct: number) => {
+    removeFromCart(indexProduct);
   };
   return (
     <div className={styles.OrderItem}>
       <figure>
-        <Image
-          src={product?.images[0]}
+        <img
+          src={product?.image}
           className="product-img"
           alt={product?.title}
           width={50}
@@ -22,7 +28,7 @@ const OrderItem = ({ product, indexValue }: any) => {
       </figure>
       <p>{product?.title}</p>
       <p>${product?.price}</p>
-      <Image
+      <img
         src={closeIcon}
         alt="close"
         onClick={() => handleRemove(indexValue)}
