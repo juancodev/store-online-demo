@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import {routerApp} from './router/index.js';
 
 dotenv.config();
 
@@ -11,9 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
-app.get('/', (req, res) =>{
-  res.send('Hello world')
-})
+routerApp(app);
 
 app.listen(PORT, ()=> {
   console.log(`Server on port ${PORT}`)

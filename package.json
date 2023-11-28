@@ -5,10 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "npx tsc",
-    "start": "node dist/index.js",
-    "development": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "dev": "npx nodemon src/index.js"
+    "client": "cd client && npm run dev",
+    "server": "npx nodemon src/index.js",
+    "dev": "concurrently \" npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
