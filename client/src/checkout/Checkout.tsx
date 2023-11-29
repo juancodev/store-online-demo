@@ -1,13 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Header } from "@/components/Header";
 import OrderItem from "@/components/OrderItem";
 import AppContext from "@/context/AppContext";
 import styles from "@/styles/Checkout.module.scss";
 import { Product } from "@/types";
+import { useSetProducts } from "@/hooks/useGetProducts";
+
+const API = "http://localhost:3200/api/v1/orders";
+const productsDestructuring: any = [];
 
 const Checkout = () => {
   const { state } = useContext(AppContext);
-  console.log(state);
+  const { cart } = state;
+  //TODO: Fix this line quit the useSetProducts and create a new fetch to the API
+  useEffect(() => {
+    if (cart.length > 0) {
+      const listProducts = cart.map((product: Product) => {
+        return product;
+      });
+      productsDestructuring.push(...listProducts);
+    }
+    console.log(productsDestructuring);
+  }, [cart]);
+  const order = useSetProducts(API, productsDestructuring);
+  console.log(order);
+  // console.log(state);
+
+  const handleSetProducts = (product: object): any => {
+    console.log(product);
+    return product;
+  };
+
   if (state.cart.length === 0) {
     return (
       <>
@@ -29,7 +52,6 @@ const Checkout = () => {
             <h1 className={styles.title}>My order</h1>
             {state.cart.map((product: Product) => {
               if (product.id) {
-                console.log(product.id);
                 const date: string = new Date().toString();
                 return (
                   <>
@@ -49,6 +71,9 @@ const Checkout = () => {
                 return null;
               }
             })}
+            <button onClick={() => handleSetProducts(productsDestructuring)}>
+              Buy
+            </button>
           </div>
         </div>
       </>

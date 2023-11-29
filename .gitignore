@@ -238,5 +238,6 @@ $RECYCLE.BIN/
 
 src/routes
 src/hooks/.useGetProducts.js
+juanshop.firebase.json
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,macos,windows,linux,dotenv

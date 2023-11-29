@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import useGetProducts from "@/hooks/useGetProducts";
+import { useGetProducts } from "@/hooks/useGetProducts";
+import { Product } from "@/types";
 import ProductItem from "@/components/ProductItem";
 import ProductDetail from "@/containers/ProductDetail";
 import SkeletonLoader from "@/components/SkeletonLoader";
 import styles from "@/styles/ProductList.module.scss";
 
 const API = "https://fakestoreapi.com/products";
-
-type GetProducts = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  images: string[];
-};
 
 const ProductList: React.FunctionComponent = () => {
   const [products, loading] = useGetProducts(API);
@@ -27,7 +19,7 @@ const ProductList: React.FunctionComponent = () => {
   return (
     <section className={styles["main-container"]}>
       <div className={styles.ProductList}>
-        {products?.map((product: GetProducts) => {
+        {products?.map((product: Product) => {
           {
             return (
               <ProductItem
