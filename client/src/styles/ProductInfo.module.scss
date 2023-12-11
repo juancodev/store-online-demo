@@ -1,25 +1,26 @@
 @use 'vars';
 
 .ProductInfo {
-  margin: 24px 24px 0 24px;
+  margin: 12px 24px 0 24px;
 }
 
 .ProductInfo p:nth-child(1) {
+  color: vars.$black;
   font-weight: bold;
   font-size: vars.$md;
   margin-top: 0;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 
 .ProductInfo p:nth-child(2) {
-  color: vars.$very-light-pink;
+  color: vars.$black;
   font-size: vars.$md;
   margin-top: 0;
   margin-bottom: 36px;
 }
 
 .ProductInfo p:nth-child(3) {
-  color: vars.$very-light-pink;
+  color: vars.$black;
   font-size: vars.$sm;
   margin-top: 0;
   margin-bottom: 36px;

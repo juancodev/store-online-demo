@@ -14,17 +14,18 @@ const Checkout = () => {
   const { cart } = state;
   //TODO: Fix this line quit the useSetProducts and create a new fetch to the API
   useEffect(() => {
-    if (cart.length > 0) {
+    if (cart.length != 0) {
       const listProducts = cart.map((product: Product) => {
         return product;
       });
+      console.log(...listProducts);
       productsDestructuring.push(...listProducts);
     }
-    console.log(productsDestructuring);
+    // console.log(productsDestructuring);
   }, [cart]);
   const order = useSetProducts(API, productsDestructuring);
-  console.log(order);
-  // console.log(state);
+  order.then((data) => console.log(data)).catch((err) => console.log(err));
+  // console.log(cart);
 
   const handleSetProducts = (product: object): any => {
     console.log(product);
@@ -50,27 +51,38 @@ const Checkout = () => {
         <div className={styles.Checkout}>
           <div className={styles["Checkout-container"]}>
             <h1 className={styles.title}>My order</h1>
-            {state.cart.map((product: Product) => {
-              if (product.id) {
-                const date: string = new Date().toString();
-                return (
-                  <>
-                    <OrderItem product={product} indexValue={product.id} />
-                    <div className={styles["Checkout-content"]}>
-                      <div className={styles.order}>
-                        <p>
-                          <span>{date.slice(0, 15)}</span>
-                          <span>6 articles</span>
-                        </p>
-                        <p>${product?.price}</p>
+            <div>
+              {state.cart.map((product: Product) => {
+                if (product.id) {
+                  const date: string = new Date().toString();
+                  return (
+                    <>
+                      <OrderItem product={product} indexValue={product.id} />
+                      <div className={styles["Checkout-content"]}>
+                        <div className={styles.order}>
+                          <p>
+                            <span>{date.slice(0, 15)}</span>
+                            <span>6 articles</span>
+                          </p>
+                          <p>${product?.price}</p>
+                        </div>
                       </div>
-                    </div>
-                  </>
-                );
-              } else {
-                return null;
-              }
-            })}
+                    </>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </div>
+            <div className={styles["Checkout-content"]}>
+              <div className={styles.order}>
+                <p>
+                  <span>Total</span>
+                </p>
+                {/* TODO: Finish total price ⚠️ */}
+                <p>${`product?.price`}</p>
+              </div>
+            </div>
             <button onClick={() => handleSetProducts(productsDestructuring)}>
               Buy
             </button>

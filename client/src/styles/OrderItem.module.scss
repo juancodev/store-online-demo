@@ -20,10 +20,12 @@
 }
 
 .OrderItem p:nth-child(2) {
-  color: vars.$very-light-pink;
+  color: vars.$black;
+  text-align: center;
 }
 
 .OrderItem p:nth-child(3) {
+  color: vars.$black;
   font-size: vars.$md;
   font-weight: bold;
 }

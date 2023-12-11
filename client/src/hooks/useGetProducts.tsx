@@ -22,16 +22,12 @@ const useGetProducts: ProductsFunction = (API) => {
   return [products, loading];
 };
 
-const useSetProducts = (API: string, data: Product) => {
+const useSetProducts = async (API: string, data: Product) => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
-    const setDataProducts = async () => {
-      const response = await axios.post(API, data);
-      setProducts(response.data.message);
-    };
-    setDataProducts();
-  }, [API]);
+  const response = await axios.post(API, data);
+  setProducts(response.data.message);
+
   return products;
 };
 
